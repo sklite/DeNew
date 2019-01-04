@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Phantom by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--[if lte IE 8]><script src="~/Assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="~/Assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="~/Assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="~/Assets/css/ie8.css"/><![endif]-->
+    <!-- Scripts -->
+    <script src="~/Assets/js/jquery.min.js"></script>
+    <script src="~/Assets/js/skel.min.js"></script>
+    <script src="~/Assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="~/Assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="~/Assets/js/main.js"></script>
+
+    @*@Scripts.Render("~/Assets/jqueryval")*@
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+    <script>
+        var time = @ViewBag.TimetoRedirect;
+        var timerInterval = setInterval(timingFunc, 1000);
+
+        function timingFunc() {
+            time--;
+            document.getElementById("goBack").innerHTML = "Вы будете перенаправлены обратно через TIME cек."
+                .replace("TIME", time); 
+            if (time === 0) {
+                window.location.href = '@ViewBag.BackLink';
+                clearInterval(timerInterval);
+            }
+        }
+    </script>
+
+</head>
+<body>
+<div>
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <partial name="Header"/>
+                @*@Html.Partial("Header")*@
+
+                <h4>Спасибо!</h4>
+                Мы обязательно с Вами свяжемся.
+
+                <div id="goBack">Вы будете перенаправлены обратно через @ViewBag.TimetoRedirect cек.</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

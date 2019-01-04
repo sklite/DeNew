@@ -1,0 +1,82 @@
+﻿@model DeNew.Models.ViewModels.FooterViewModel
+
+
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>Свяжитесь с нами</h2>
+            <form asp-controller="Home" asp-action="ContactUs" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+                    <span>Correct errors, you stupid!</span>
+                </div>
+                <div class="field half first">
+                    @*<label asp-for="Name" class="control-label"></label>*@
+                    <input asp-for="Name" class="form-control" placeholder="Имя" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="field half">
+                    @*<label asp-for="ContactData" class="control-label"></label>*@
+                    <input asp-for="ContactData" class="form-control" placeholder="Почта или телефон" />
+                    <span asp-validation-for="ContactData" class="text-danger"></span>
+                </div>
+                <div class="field">
+                    @*<label asp-for="Message" class="control-label"></label>*@
+                    <input asp-for="Message" class="form-control" placeholder="Что Вам нужно сделать?" />
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <ul class="actions">
+                    <li>
+                        <input type="submit" value="Отправить" class="special" />
+                    </li>
+                </ul>
+            </form>
+        </section>
+        <section>
+            @*<h2>Follow</h2>
+                <ul class="icons">
+                    <li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+                    <li><a href="#" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon style2 fa-500px"><span class="label">500px</span></a></li>
+                    <li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
+                    <li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+                </ul>*@
+        </section>
+        <ul class="copyright">
+            <li>&copy; dubna-express.ru Благоустройство участков и строительство. 8 (916) 846 32-94.</li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    <!--LiveInternet counter-->
+    <script type="text/javascript">
+        document.write("<a href='//www.liveinternet.ru/click' " +
+            "target=_blank><img src='//counter.yadro.ru/hit?t15.1;r" +
+            escape(document.referrer) +
+            ((typeof (screen) == "undefined")
+                ? ""
+                : ";s" +
+                screen.width +
+                "*" +
+                screen.height +
+                "*" +
+                (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) +
+            ";u" +
+            escape(document.URL) +
+            ";" +
+            Math.random() +
+            "' alt='' title='LiveInternet: показано число просмотров за 24" +
+            " часа, посетителей за 24 часа и за сегодня' " +
+            "border='0' width='88' height='31'><\/a>")
+    </script><!--/LiveInternet-->
+</footer>
+

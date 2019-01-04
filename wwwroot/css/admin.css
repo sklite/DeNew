@@ -1,0 +1,45 @@
+#editorLeft, #editorRight {
+    border-style: solid;
+    border-width: 1px;
+    width: 49%;
+    /* height: 270px; */
+}
+
+#editorLeft {
+    float: left;
+}
+
+#editorRight {
+    float: right;
+}
+
+#descriptionContainer {
+    text-align: center;
+    margin: 10px;
+}
+
+#descriptionEditor {
+    height: 5em;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    font-family: "Times New Roman";
+    font-size: 16px;
+}
+
+select {
+    width: 100%;
+    text-indent: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    height: 3em;
+}
+
+.red {
+   background-color: #f70303;
+}
+
+.red:hover {
+    background-color: #ed1600;
+}
