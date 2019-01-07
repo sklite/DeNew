@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DeNew.Models.Entities;
+using DeNew.Settings;
 
 namespace DeNew.Models.Mapping
 {
@@ -9,8 +10,13 @@ namespace DeNew.Models.Mapping
         {
             if (sourceMember == null)
                 return string.Empty;
+            if (sourceMember.ParentPage == null)
+                return $"main/{sourceMember.Alias}";
 
-            return $"main/{sourceMember.Alias}";
+            if (sourceMember.ParentPage.Id == VariablesSettingsConfig.MAIN_PAGE_ID)
+                return $"main/{sourceMember.Alias}";
+
+            return $"main/{sourceMember.ParentPage.Alias}/{sourceMember.Alias}";
         }
     }
 }

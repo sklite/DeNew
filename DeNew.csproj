@@ -1492,10 +1492,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ViewModels\Interfaces\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\css\admin.css" />
     <None Include="wwwroot\css\font-awesome.min.css" />
     <None Include="wwwroot\css\ie8.css" />

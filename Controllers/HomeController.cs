@@ -27,10 +27,23 @@ namespace DeNew.Controllers
         {
             var mainPage = _pageService.GetPage();
             var mainPageVm = _pageConverterService.ConvertPage(mainPage);
-            //var subPages = _pageService.GetChildPagesFor(mainPage.Id);
-            //mainPageVm.SubPages = _pageConverterService.ConvertPages(subPages);
             return View("IndexNew", mainPageVm);
         }
+
+        //Support older links
+        [Route("Category/{id}")]
+        public ActionResult Index(int id)
+        {
+            return Redirect($"/main/{id}");
+        }
+
+        [Route("Category/{catId}/{subCatId}")]
+        public ActionResult Index(int id, int subCatId)
+        {
+            return Redirect($"/main/{id}/{subCatId}");
+        }
+
+
         [Route("main/{category}")]
         public IActionResult Page(string category)
         {
@@ -45,7 +58,9 @@ namespace DeNew.Controllers
         [Route("main/{category}/{subcategory}")]
         public IActionResult Page(string category, string subcategory)
         {
-            return null;
+            var page = _pageService.GetPage(category, subcategory);
+            var pageVm = _pageConverterService.ConvertPage(page);
+            return View("IndexNew", pageVm);
         }
 
         public IActionResult About()

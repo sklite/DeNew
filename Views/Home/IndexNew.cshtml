@@ -1,16 +1,16 @@
 ﻿@model DeNew.Models.ViewModels.PageViewModel
 
 @{
-    ViewBag.Title = "Дубна-экспресс, дачное благоустройство, строительство";
-    ViewBag.Description = "Дубна-экспресс, дачное благоустройство, строительство";
-    ViewBag.Keywords = "Благоустройство, Дубна, строительство, дачи, дубна-экспресс, заборы, бытовки, вскопка участка, газоны, ямы";
+    ViewBag.Title = Model.Name; /*"Дубна-экспресс, дачное благоустройство, строительство";*/
+    ViewBag.Description = Model.MetaDescription; //"Дубна-экспресс, дачное благоустройство, строительство";
+    ViewBag.Keywords = Model.Keywords; //"Благоустройство, Дубна, строительство, дачи, дубна-экспресс, заборы, бытовки, вскопка участка, газоны, ямы";
 }
 
 <h1>
-    Дубна-экспресс<br />
-    Дачное благоустройство, строительство
+    @Model.Name
 </h1>
-<p>Наши услуги: </p>
+<p>@Html.Raw(Model.Content)</p>
+
 @if (Model.SubPages.Any())
 {
     <section class="tiles">
@@ -22,7 +22,7 @@
                         <img src="@item.ImagePath" alt="" />
                     </object>
                 </span>
-                <a href="@item.Link">
+                <a href="/@item.Link">
                     <h2>@item.Name</h2>
                     <div class="content">
                         <p>@item.Description</p>
