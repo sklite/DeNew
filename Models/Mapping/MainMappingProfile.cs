@@ -9,9 +9,9 @@ using DeNew.Settings;
 
 namespace DeNew.Models.Mapping
 {
-    public class PagesProfile : Profile
+    public class MainMappingProfile : Profile
     {
-        public PagesProfile()
+        public MainMappingProfile()
         {
             //   if we want to add prefix to name
             //   .ForMember(pageVm => pageVm.ImageName, config => config.AddTransform(name => VariablesSettingsConfig.PREVIEW_IMG_DIR + name));

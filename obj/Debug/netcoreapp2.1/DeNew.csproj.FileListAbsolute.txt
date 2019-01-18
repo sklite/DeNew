@@ -35,3 +35,4 @@ C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Header.g.cs
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutNew.g.cshtml.cs
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Footer.g.cshtml.cs
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Home\ContactUs.g.cshtml.cs
+C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Admin\View.g.cshtml.cs

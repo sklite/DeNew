@@ -16,6 +16,8 @@ namespace DeNew.Settings
 
         public const string PREVIEW_IMG_DIR = @"/Images/Preview/";
 
+        public const int ADMIN_ACCESS_LEVEL = 1;
+
         // глобальные настройки, должны быть во всех страницах
 
         public const int SELECT_IND = -2;

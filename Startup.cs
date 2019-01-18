@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DeNew.Models;
 using DeNew.Services;
+using DeNew.Services.Admin;
 using DeNew.Services.Pages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,8 @@ namespace DeNew
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IPageConverterService, PageConverterService>();
             services.AddTransient<IPageVmConverterService, PageVmConverterService>();
+            services.AddTransient<IHashCalculator, MdCalculator>();
+            services.AddTransient<ILoginService, LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
