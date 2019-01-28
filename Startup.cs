@@ -7,6 +7,7 @@ using DeNew.Models;
 using DeNew.Services;
 using DeNew.Services.Admin;
 using DeNew.Services.Pages;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -40,7 +41,11 @@ namespace DeNew
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DeContext>(options =>
                 options.UseSqlServer(connection));
-
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new PathString("/Login");
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -66,6 +71,8 @@ namespace DeNew
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

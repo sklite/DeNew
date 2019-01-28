@@ -11,6 +11,7 @@ using DeNew.Models.ViewModels;
 using DeNew.Services;
 using DeNew.Services.Pages;
 using DeNew.Settings;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DeNew.Controllers
 {
@@ -27,6 +28,7 @@ namespace DeNew.Controllers
         {
             var mainPage = _pageService.GetPage();
             var mainPageVm = _pageConverterService.ConvertPage(mainPage);
+            mainPageVm.CanEdit = User.Identity.IsAuthenticated;
             return View("IndexNew", mainPageVm);
         }
 
@@ -43,7 +45,7 @@ namespace DeNew.Controllers
             return Redirect($"/main/{id}/{subCatId}");
         }
 
-
+        //[Authorize]
         [Route("main/{category}")]
         public IActionResult Page(string category)
         {
@@ -51,6 +53,7 @@ namespace DeNew.Controllers
                 return RedirectToAction("Index");
             var page = _pageService.GetPage(category);
             var pageVm = _pageConverterService.ConvertPage(page);
+            pageVm.CanEdit = User.Identity.IsAuthenticated;
             return View("IndexNew", pageVm);
 
         }
@@ -60,14 +63,13 @@ namespace DeNew.Controllers
         {
             var page = _pageService.GetPage(category, subcategory);
             var pageVm = _pageConverterService.ConvertPage(page);
+            pageVm.CanEdit = User.Identity.IsAuthenticated;
             return View("IndexNew", pageVm);
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
-         //   ViewData["Message"] += _service.Send();
             return View();
         }
 

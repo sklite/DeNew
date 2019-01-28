@@ -2,8 +2,8 @@
 
 @{
     ViewBag.Title = Model.Name;
-    ViewBag.Description = Model.MetaDescription; 
-    ViewBag.Keywords = Model.Keywords; 
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.Keywords;
 }
 
 <h1>
@@ -32,4 +32,14 @@
         }
 
     </section>
+}
+
+@if (Model.CanEdit)
+{
+    <input type="submit" value="Редактировать страницу" class="btn btn-default" />
+    <a asp-controller="Admin" asp-action="Logout" class="top-right">Выйти</a>
+}
+else
+{
+    <a asp-controller="Admin" asp-action="Index" class="top-right">Войти</a>
 }

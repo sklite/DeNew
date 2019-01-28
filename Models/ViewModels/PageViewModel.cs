@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DeNew.Models.ViewModels.Interfaces;
 
 namespace DeNew.Models.ViewModels
 {
-    public class PageViewModel
+    public class PageViewModel : IEditable
     {
         public int Id { get; set; }
 
@@ -32,6 +33,7 @@ namespace DeNew.Models.ViewModels
         public PageViewModel ParentPage { get; set; }
 
         public IEnumerable<PageViewModel> SubPages { get; set; }
-
+        public bool CanEdit { get; set; }
+    
     }
 }
