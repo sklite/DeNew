@@ -13,25 +13,45 @@
 
 @if (Model.SubPages.Any())
 {
-    <section class="tiles">
-        @foreach (var item in Model.SubPages.OrderBy(cat => cat.OrderNum))
-        {
-            <article class="style3">
-                <span class="image">
-                    <object data="/images/preview/imgStub.jpg" type="image/png">
-                        <img src="@item.ImagePath" alt="" />
-                    </object>
-                </span>
-                <a href="/@item.Link">
-                    <h2>@item.Name</h2>
-                    <div class="content">
-                        <p>@item.Description</p>
-                    </div>
-                </a>
-            </article>
-        }
+<section class="tiles">
+    @foreach (var item in Model.SubPages.OrderBy(cat => cat.OrderNum))
+    {
+        <article class="style3">
+            @if (Model.CanEdit)
+            {
+                <div class="top-right-relative red-button" onclick="RemoveArticle(@item.Id)">Удалить</div>
+            }
+            <span class="image">
+                <object data="/images/preview/imgStub.jpg" type="image/png">
+                    <img src="@item.ImagePath" alt=""/>
+                </object>
+            </span>
+            <a href="/@item.Link">
+                <h2>@item.Name</h2>
+                <div class="content">
+                    <p>@item.Description</p>
+                </div>
+            </a>
+        </article>
+    }
+    @if (Model.CanEdit)
+    {
+        <article class="style3">
+            <span class="image">
+                <object data="/images/preview/imgStub.jpg" type="image/png">
+                    @*<img src="@item.ImagePath" alt="" />*@
+                </object>
+            </span>
+            <a asp-controller="Admin" asp-action="CreateNewPage" asp-route-parentId="@Model.Id">
+                <h2>Добавить страницу</h2>
+                <div class="content">
+                    <p>Создать новую страницу</p>
+                </div>
+            </a>
+        </article>
+    }
 
-    </section>
+</section>
 }
 
 @if (Model.CanEdit)

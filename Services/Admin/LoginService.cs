@@ -1,8 +1,11 @@
 ﻿using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using DeNew.Models;
 using DeNew.Models.Entities;
 using DeNew.Models.ViewModels.Administrator;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 
 namespace DeNew.Services.Admin
 {
@@ -18,10 +21,10 @@ namespace DeNew.Services.Admin
         }
 
 
-        public User MakeLoginAttempt(LoginViewModel loginData)
+        public async Task<User> MakeLoginAttempt(LoginViewModel loginData)
         {
             var passwordHash = _hashCalculator.GetHash(loginData.Password);
-            var result = _dbContext.Users.FirstOrDefault(user =>
+            var result = await _dbContext.Users.FirstOrDefaultAsync(user =>
                 user.Login == loginData.Login && user.PasswordHash == passwordHash);
             return result;
         }

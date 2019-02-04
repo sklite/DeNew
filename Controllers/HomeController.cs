@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using DeNew.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using DeNew.Models;
 using DeNew.Models.Entities;
@@ -32,6 +33,13 @@ namespace DeNew.Controllers
             return View("IndexNew", mainPageVm);
         }
 
+        public ActionResult OpenPage(int pageId)
+        {
+            var page = _pageService.GetPageById(pageId);
+            var path = page.GetPageRelativePath();
+            return Redirect(path);
+        }
+
         //Support older links
         [Route("Category/{id}")]
         public ActionResult Index(int id)
@@ -44,8 +52,8 @@ namespace DeNew.Controllers
         {
             return Redirect($"/main/{id}/{subCatId}");
         }
+        //
 
-        //[Authorize]
         [Route("main/{category}")]
         public IActionResult Page(string category)
         {

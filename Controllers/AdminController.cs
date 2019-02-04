@@ -6,27 +6,30 @@ using System.Threading.Tasks;
 using DeNew.Models.Entities;
 using DeNew.Models.ViewModels.Administrator;
 using DeNew.Services.Admin;
+using DeNew.Services.Pages;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace DeNew.Controllers
 {
     public class AdminController : Controller
     {
         private ILoginService _loginService;
-        public AdminController(ILoginService loginService)
+        private IPageManipulator _pageManipulator;
+        public AdminController(ILoginService loginService, IPageManipulator pageManipulator)
         {
             _loginService = loginService;
+            _pageManipulator = pageManipulator;
         }
 
         private async Task Authenticate(string userName)
         {
             // создаем один claim
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
-            };
+            var claims = new List<Claim>{new Claim(ClaimsIdentity.DefaultNameClaimType, userName)};
             // создаем объект ClaimsIdentity
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
             // установка аутентификационных куки
@@ -34,7 +37,7 @@ namespace DeNew.Controllers
         }
 
         [Route("/login")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View("View");
         }
@@ -45,7 +48,7 @@ namespace DeNew.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _loginService.MakeLoginAttempt(loginData);
+                var user = await _loginService.MakeLoginAttempt(loginData);
                 if (user != null)
                 {
                     await Authenticate(user.Login);
@@ -62,6 +65,25 @@ namespace DeNew.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
+        }
+        [Authorize]
+        public IActionResult CreateNewPage(int parentId = 1)
+        {
+            var page = _pageManipulator.CreateNewPage(parentId);
+            return RedirectToAction("OpenPage", "Home", new { pageId = page.Id});
+        }
+        //[Route("/delete")]
+        [HttpPost]
+        public JsonResult Delete(int pageId)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                var obj = new { Message = "Недостаточно прав" };
+                return new JsonResult(obj);
+            }
+
+            var result = _pageManipulator.DeletePage(pageId, out string message);
+            return new JsonResult(new {Deleted = result, Message = message});
         }
 
     }

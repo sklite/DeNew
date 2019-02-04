@@ -3,5 +3,7 @@
     public interface IEditable
     {
         bool CanEdit { get; set; }
+
+        string EditMessage { get; set; }
     }
 }

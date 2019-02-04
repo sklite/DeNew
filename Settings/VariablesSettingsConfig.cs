@@ -10,6 +10,8 @@ namespace DeNew.Settings
     /// </summary>
     public class VariablesSettingsConfig
     {
+        public const string MainContentPagePrefix = "main";
+
         public const int MAIN_PAGE_ID = 1;
 
         public static int TIME_TO_REDIRECT = 5;

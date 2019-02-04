@@ -12612,6 +12612,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {},
+        "https://sitecore.myget.org/F/sc-packages/api/v3/index.json": {},
         "https://sitecore.myget.org/F/sc-platform-9-1/api/v3/index.json": {}
       },
       "frameworks": {
