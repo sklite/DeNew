@@ -7,5 +7,8 @@ namespace DeNew.Services.Pages
         Page CreateNewPage(int parentId);
 
         bool DeletePage(int pageId, out string message);
+
+
+        bool UpdatePage(Page newPage, out string message);
     }
 }

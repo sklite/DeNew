@@ -26,5 +26,17 @@ namespace DeNew.Services.Pages
             var pageVm = _mapper.Map<Page, PageViewModel>(page);
             return pageVm;
         }
+
+        public Page ConvertPageVm(PageViewModel pageVm)
+        {
+            var page = _mapper.Map<PageViewModel, Page>(pageVm);
+
+            return page;
+        }
+
+        public IEnumerable<Page> ConvertPagesVm(IEnumerable<PageViewModel> pagesVm)
+        {
+            return pagesVm?.Select(ConvertPageVm).ToList();
+        }
     }
 }

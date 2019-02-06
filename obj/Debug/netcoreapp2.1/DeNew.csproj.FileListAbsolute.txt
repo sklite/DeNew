@@ -5,7 +5,6 @@ C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.dll
 C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.pdb
 C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.Views.dll
 C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.Views.pdb
-C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.csprojAssemblyReference.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.csproj.CoreCompileInputs.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.RazorAssemblyInfo.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.RazorAssemblyInfo.cs
@@ -36,3 +35,6 @@ C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutNew.
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Footer.g.cshtml.cs
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Home\ContactUs.g.cshtml.cs
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Admin\View.g.cshtml.cs
+C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.csprojAssemblyReference.cache
+C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Admin\PageEdit.g.cshtml.cs
+C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_AdminLayout.g.cshtml.cs

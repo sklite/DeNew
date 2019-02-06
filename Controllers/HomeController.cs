@@ -18,9 +18,9 @@ namespace DeNew.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPageService _pageService;
+        private readonly IPageRepository _pageService;
         private readonly IPageConverterService _pageConverterService;
-        public HomeController(IPageService pageService, IPageConverterService converter)
+        public HomeController(IPageRepository pageService, IPageConverterService converter)
         {
             _pageService = pageService;
             _pageConverterService = converter;

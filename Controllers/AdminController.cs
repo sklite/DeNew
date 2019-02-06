@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using DeNew.Models.Entities;
+using DeNew.Models.ViewModels;
 using DeNew.Models.ViewModels.Administrator;
 using DeNew.Services.Admin;
 using DeNew.Services.Pages;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace DeNew.Controllers
@@ -20,10 +22,17 @@ namespace DeNew.Controllers
     {
         private ILoginService _loginService;
         private IPageManipulator _pageManipulator;
-        public AdminController(ILoginService loginService, IPageManipulator pageManipulator)
+        private IPageConverterService _pageConverterService;
+        private IPageRepository _pageRepository;
+        public AdminController(ILoginService loginService,
+            IPageManipulator pageManipulator, 
+            IPageConverterService pageConverterService,
+            IPageRepository pageRepository)
         {
             _loginService = loginService;
             _pageManipulator = pageManipulator;
+            _pageConverterService = pageConverterService;
+            _pageRepository = pageRepository;
         }
 
         private async Task Authenticate(string userName)
@@ -84,6 +93,28 @@ namespace DeNew.Controllers
 
             var result = _pageManipulator.DeletePage(pageId, out string message);
             return new JsonResult(new {Deleted = result, Message = message});
+        }
+        [Route("/edit")]
+        public IActionResult EditPage(int pageId)
+        {
+            var mainPage = _pageRepository.GetPageById(pageId);
+            var mainPageVm = _pageConverterService.ConvertPage(mainPage);
+            mainPageVm.CanEdit = User.Identity.IsAuthenticated;
+            return View("PageEdit", mainPageVm);
+        }
+
+        [HttpPost]
+        public JsonResult Update(PageViewModel pageVm)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                var obj = new { Message = "Недостаточно прав" };
+                return new JsonResult(obj);
+            }
+
+            var pageModel = _pageConverterService.ConvertPageVm(pageVm);
+            var result = _pageManipulator.UpdatePage(pageModel, out string message);
+            return new JsonResult(new { Updated = result, Message = message });
         }
 
     }

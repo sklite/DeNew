@@ -1,0 +1,48 @@
+﻿@model DeNew.Models.ViewModels.PageViewModel
+
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = Model.Name;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.Keywords;
+}
+
+
+
+@if (Model.CanEdit)
+{
+    
+    <input type="button" value="Отредактировать" class="btn btn-default" />
+    <form asp-action="Update" asp-controller="Admin">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Content" class="control-label"></label>
+            <input asp-for="Content" class="admin-input" />
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Alias"></label>
+            <input asp-for="Alias" class="admin-input" />
+            <span asp-validation-for="Alias" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Отредактировать" class="btn btn-default" />
+        </div>
+    </form>
+
+
+    <a asp-controller="Admin" asp-action="Logout" class="top-right">Выйти</a>
+
+
+
+}
+else
+{
+    <a asp-controller="Admin" asp-action="Index" class="top-right">Войти</a>
+    <h1>
+        @Model.Name
+    </h1>
+    <p>@Html.Raw(Model.Content)</p>
+
+}

@@ -7,7 +7,7 @@ using DeNew.Settings;
 
 namespace DeNew.Services.Pages
 {
-    public class PageRepository : IPageService
+    public class PageRepository : IPageRepository
     {
         private readonly DeContext _context;
         public PageRepository(DeContext context)
@@ -64,9 +64,11 @@ namespace DeNew.Services.Pages
             var page = _context.Pages.FirstOrDefault(item => item.Id == id);
             page.ParentPage = GetParentPageFor(page.Id);
             if (page.ParentPage != null)
+            { 
                 page.ParentPage.ParentPage = GetParentPageFor(page.ParentPage.Id);
-            if (page.ParentPage.ParentPage != null)
-                page.ParentPage.ParentPage.ParentPage = GetParentPageFor(page.ParentPage.ParentPage.Id);
+                if (page.ParentPage.ParentPage != null)
+                    page.ParentPage.ParentPage.ParentPage = GetParentPageFor(page.ParentPage.ParentPage.Id);
+            }
             return page;
         }
     }

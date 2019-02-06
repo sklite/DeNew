@@ -6,60 +6,75 @@
     ViewBag.Keywords = Model.Keywords;
 }
 
-<h1>
-    @Model.Name
-</h1>
-<p>@Html.Raw(Model.Content)</p>
 
-@if (Model.SubPages.Any())
-{
-<section class="tiles">
-    @foreach (var item in Model.SubPages.OrderBy(cat => cat.OrderNum))
-    {
-        <article class="style3">
-            @if (Model.CanEdit)
-            {
-                <div class="top-right-relative red-button" onclick="RemoveArticle(@item.Id)">Удалить</div>
-            }
-            <span class="image">
-                <object data="/images/preview/imgStub.jpg" type="image/png">
-                    <img src="@item.ImagePath" alt=""/>
-                </object>
-            </span>
-            <a href="/@item.Link">
-                <h2>@item.Name</h2>
-                <div class="content">
-                    <p>@item.Description</p>
-                </div>
-            </a>
-        </article>
-    }
-    @if (Model.CanEdit)
-    {
-        <article class="style3">
-            <span class="image">
-                <object data="/images/preview/imgStub.jpg" type="image/png">
-                    @*<img src="@item.ImagePath" alt="" />*@
-                </object>
-            </span>
-            <a asp-controller="Admin" asp-action="CreateNewPage" asp-route-parentId="@Model.Id">
-                <h2>Добавить страницу</h2>
-                <div class="content">
-                    <p>Создать новую страницу</p>
-                </div>
-            </a>
-        </article>
-    }
-
-</section>
-}
 
 @if (Model.CanEdit)
 {
-    <input type="submit" value="Редактировать страницу" class="btn btn-default" />
+    <a asp-action="EditPage" asp-controller="Admin" asp-route-pageId="@Model.Id">
+    <input type="button" value="Отредактировать" class="btn btn-default" />
+    </a>
+
+
     <a asp-controller="Admin" asp-action="Logout" class="top-right">Выйти</a>
+
+
+
 }
 else
 {
     <a asp-controller="Admin" asp-action="Index" class="top-right">Войти</a>
+    <h1>
+        @Model.Name
+    </h1>
+    <p>@Html.Raw(Model.Content)</p>
+
 }
+
+
+
+@if (Model.SubPages.Any() || Model.CanEdit)
+{
+    <section class="tiles">
+        @if (Model.SubPages.Any())
+        {//TODO: create 2 separate layouts for admin and non-admin users
+            @foreach (var item in Model.SubPages.OrderBy(cat => cat.OrderNum))
+            {
+                <article class="style3">
+                    @if (Model.CanEdit)
+                    {
+                        <div class="top-right-relative red-button" onclick="RemoveArticle(@item.Id)">Удалить</div>
+                    }
+                    <span class="image">
+                        <object data="/images/preview/imgStub.jpg" type="image/png">
+                            <img src="@item.ImagePath" alt="" />
+                        </object>
+                    </span>
+                    <a href="/@item.Link">
+                        <h2>@item.Name</h2>
+                        <div class="content">
+                            <p>@item.Description</p>
+                        </div>
+                    </a>
+                </article>
+            }
+        }
+        @if (Model.CanEdit)
+        {
+            <article class="style3">
+                <span class="image">
+                    <object data="/images/preview/imgStub.jpg" type="image/png">
+                        @*<img src="@item.ImagePath" alt="" />*@
+                    </object>
+                </span>
+                <a asp-controller="Admin" asp-action="CreateNewPage" asp-route-parentId="@Model.Id">
+                    <h2>Добавить страницу</h2>
+                    <div class="content">
+                        <p>Создать новую страницу</p>
+                    </div>
+                </a>
+            </article>
+        }
+
+    </section>
+}
+

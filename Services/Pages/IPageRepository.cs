@@ -3,7 +3,7 @@ using DeNew.Models.Entities;
 
 namespace DeNew.Services.Pages
 {
-    public interface IPageService
+    public interface IPageRepository
     {
         Page GetPage(string pageAlias1 = null, string pageAlias2 = null);
 

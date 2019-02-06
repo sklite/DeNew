@@ -56,5 +56,28 @@ namespace DeNew.Services.Pages
             message = "Успешно удалено";
             return true;
         }
+
+        public bool UpdatePage(Page newPage, out string message)
+        {
+            var oldPage = _context.Pages.FirstOrDefault(item => item.Id == newPage.Id);
+            if (oldPage == null)
+            {
+                message = $"Страница с id = {newPage.Id} не найдена";
+                return false;
+            }
+
+            oldPage.Alias = newPage.Alias;
+            oldPage.Content = newPage.Content;
+            oldPage.Description = newPage.Description;
+            oldPage.ImageName = newPage.ImageName;
+            oldPage.Keywords = newPage.Keywords;
+            oldPage.MetaDescription = newPage.MetaDescription;
+            oldPage.Name = newPage.Name;
+            oldPage.OrderNum = newPage.OrderNum;
+
+            _context.SaveChanges();
+            message = $"Успешно сохранено";
+            return true;
+        }
     }
 }

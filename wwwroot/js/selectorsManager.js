@@ -23,6 +23,28 @@
         });
     }
 
+    this.UpdateArticle = function() {
+        console.log("Save article button clicked ");
+
+        var serializedData = {
+            pageId: articleId
+        };
+        request = $.ajax({
+            url: "/admin/delete",
+            type: "post",
+            data: serializedData,
+            success: function (response) {
+                alert(response.message);
+                if (response.deleted) {
+                    location.reload();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    }
+
     //А можно ещё вот так:
     /*
     $(function() {

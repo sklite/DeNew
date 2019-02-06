@@ -50,10 +50,9 @@ namespace DeNew
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
 
-            services.AddTransient<IPageService, PageRepository>();
+            services.AddTransient<IPageRepository, PageRepository>();
             services.AddTransient<IPageManipulator, PageManipulator>();
             services.AddTransient<IPageConverterService, PageConverterService>();
-            services.AddTransient<IPageVmConverterService, PageVmConverterService>();
             services.AddTransient<IHashCalculator, MdCalculator>();
             services.AddTransient<ILoginService, LoginService>();
         }
