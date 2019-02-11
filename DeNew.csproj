@@ -1480,6 +1480,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2018.3.1017" />
   </ItemGroup>
 
   <ItemGroup>

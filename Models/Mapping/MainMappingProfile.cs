@@ -21,6 +21,11 @@ namespace DeNew.Models.Mapping
                 .ForMember(pageVm => pageVm.Link, config => config.ConvertUsing<PageLinkConverter, Page>(page => page))
                 .ForMember(pageVm => pageVm.SubPages, config => config.MapFrom(page => page.SubPages));
 
+
+            CreateMap<PageViewModel,Page>()
+                .ForMember(page => page.ImageName, config => config.MapFrom(page => page.ImagePath))
+                .ForMember(pageVm => pageVm.SubPages, config => config.MapFrom(page => page.SubPages));
+
         }
     }
 }

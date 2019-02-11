@@ -1,4 +1,5 @@
-﻿@model DeNew.Models.ViewModels.PageViewModel
+﻿@using Kendo.Mvc.UI
+@model DeNew.Models.ViewModels.PageViewModel
 
 @{
     Layout = "_AdminLayout";
@@ -6,12 +7,163 @@
     ViewBag.Description = Model.MetaDescription;
     ViewBag.Keywords = Model.Keywords;
 }
+@* Make sure tag helpers are not available for the Editor content *@
+@removeTagHelper "*, Microsoft.AspNet.Mvc.Razor"
+@removeTagHelper "*, Microsoft.AspNetCore.Mvc.Razor"
+
+@section scripts
+    {
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.common-bootstrap.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.default.min.css" />
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.all.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.aspnetmvc.min.js"></script>
+}
 
 
+<br />
+<br />
+<br />
 
 @if (Model.CanEdit)
 {
-    
+
+    @using (Html.BeginForm("Update", "Admin", FormMethod.Post))
+    {
+        <input type="hidden" id="Id" name="Id" value="@Model.Id">
+        <div>
+            <div id="editorLeft">
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            Имя статьи:
+                        </td>
+                        <td>
+                            @(Html.Kendo().TextBox()
+                                                          .Name("Name")
+                                                          .HtmlAttributes(new
+                                                          {
+                                                              style = "width:100%",
+                                                              placeholder = "Впишите сюда название статьи"
+                                                          }))
+                        </td>
+                    </tr>
+                </table>
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 20%">
+                            <p style="text-align: left;">
+                                Описание:
+                            </p>
+                        </td>
+                        <td>
+                            @(Html.TextArea("Description", new
+                                {
+                                    placeholder = "Ведите сюда описание что будет под картинкой",
+                                    style = "width:100%"
+                                }))
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            URL название страницы:
+                        </td>
+                        <td>
+                            @(Html.Kendo().TextBox()
+                                          .Name("Alias")
+                                          .HtmlAttributes(new
+                                          {
+                                              style = "width:100%",
+                                              placeholder = "Впишите сюда описание для поисковиков"
+                                          }))
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Описание для поисковиков:
+                        </td>
+                        <td>
+                            @(Html.Kendo().TextBox()
+                                                          .Name("MetaDescription")
+                                                          .HtmlAttributes(new
+                                                          {
+                                                              style = "width:100%",
+                                                              placeholder = "Впишите сюда описание для поисковиков"
+                                                          }))
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Тэги:
+                        </td>
+                        <td>
+                            @(Html.Kendo().TextBox()
+                                                          .Name("Keywords")
+                                                          .HtmlAttributes(new
+                                                          {
+                                                              style = "width:100%",
+                                                              placeholder = "Строительство, беседки, вспашка, копка"
+                                                          }))
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div id="editorRight">
+                Текущая картинка:
+                <input type="hidden" id="imageName" name="imageName" value="1">
+
+                @(Html.Kendo().Upload().Name("ImagePath").Async(a => a
+                                                                                    .Save("Save", "Upload")
+                                                                                    .Remove("Remove", "Upload")
+                                                                                    .AutoUpload(true))
+                                                                                     .Events(events => events
+                                                                                            .Success("onSuccess")
+                                                                                        )
+                );
+                <br />
+                <img src="/Images/Preview/1.jpg" id="imgPreview" width="309" height="285" />
+
+            </div>
+            <br />
+            @(Html.Kendo().Editor()
+                                              .Name("Content")
+                                              .HtmlAttributes(new { style = "height:440px", aria_label = "editor" })
+                                              .Resizable(resizable => resizable.Content(true).Toolbar(true))
+                                              .ImageBrowser(imageBrowser => imageBrowser
+                                                  .Image("~/Content/UserFiles/Images/{0}")
+                                                  .Read("Read", "ImageBrowser")
+                                                  .Create("Create", "ImageBrowser")
+                                                  .Destroy("Destroy", "ImageBrowser")
+                                                  .Upload("Upload", "ImageBrowser")
+                                                  .Thumbnail("Thumbnail", "ImageBrowser")
+                                              )
+                                              .Value(@<text>
+                                                <p>
+                                                    Read <a href="http://docs.telerik.com/kendo-ui">more details</a> or send us your
+                                                    <a href="http://www.telerik.com/forums">feedback</a>!
+                                                </p>
+                                            </text>)
+
+            )
+
+            <br />
+
+            @(Html.Kendo().Button()
+                                          .Name("primaryTextButton")
+                                          .HtmlAttributes(new { type = "submit", @class = "k-button k-primary" })
+                                          .Content("Сохранить статью"))
+
+        </div>
+    }
+
+
+
     <input type="button" value="Отредактировать" class="btn btn-default" />
     <form asp-action="Update" asp-controller="Admin">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>

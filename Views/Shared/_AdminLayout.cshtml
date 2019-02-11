@@ -11,13 +11,11 @@
     <!--[if lte IE 8]><script src="~/js/ie/html5shiv.js"></script><![endif]-->
     @*<link rel="stylesheet" href="~/css/main.css" />*@
     <link href="~/css/admin.css" rel="stylesheet" />
-    <!--[if lte IE 9]><link rel="stylesheet" href="~/css/ie9.css"/><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="~/css/ie8.css"/><![endif]-->
 
-    <script src="~/js/skel.min.js"></script>
+    @*<script src="~/js/skel.min.js"></script>
     <script src="~/js/util.js"></script>
 
-    <script src="~/js/main.js"></script>
+    <script src="~/js/main.js"></script>*@
     <script src="~/js/selectorsManager.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
@@ -31,12 +29,9 @@
         <!-- Main -->
         <div id="main">
             <div class="inner">
-                <partial name="Header"/>
                 @RenderBody()
             </div>
         </div>
-        <!-- Main end -->
-        <partial name="Footer" model="new FooterViewModel()"/>
     </div>
 </div>
 

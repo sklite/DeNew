@@ -6,28 +6,23 @@
     ViewBag.Keywords = Model.Keywords;
 }
 
-
+<h1>
+    @Model.Name
+</h1>
+<p>@Html.Raw(Model.Content)</p>
 
 @if (Model.CanEdit)
 {
     <a asp-action="EditPage" asp-controller="Admin" asp-route-pageId="@Model.Id">
-    <input type="button" value="Отредактировать" class="btn btn-default" />
+        <input type="button" value="Отредактировать" class="btn btn-default" />
     </a>
 
 
     <a asp-controller="Admin" asp-action="Logout" class="top-right">Выйти</a>
-
-
-
 }
 else
 {
     <a asp-controller="Admin" asp-action="Index" class="top-right">Войти</a>
-    <h1>
-        @Model.Name
-    </h1>
-    <p>@Html.Raw(Model.Content)</p>
-
 }
 
 
@@ -74,7 +69,6 @@ else
                 </a>
             </article>
         }
-
     </section>
 }
 

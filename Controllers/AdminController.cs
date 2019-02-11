@@ -104,7 +104,7 @@ namespace DeNew.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(PageViewModel pageVm)
+        public IActionResult Update(PageViewModel pageVm)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -115,6 +115,11 @@ namespace DeNew.Controllers
             var pageModel = _pageConverterService.ConvertPageVm(pageVm);
             var result = _pageManipulator.UpdatePage(pageModel, out string message);
             return new JsonResult(new { Updated = result, Message = message });
+        }
+
+        public IActionResult ImageBrowser()
+        {
+            return View();
         }
 
     }
