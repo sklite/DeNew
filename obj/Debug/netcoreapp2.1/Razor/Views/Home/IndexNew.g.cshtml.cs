@@ -99,7 +99,7 @@ Write(Html.Raw(Model.Content));
             WriteLiteral("    ");
             EndContext();
             BeginContext(273, 168, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97893fef07144ba88eb81d090ba6602a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b87dcfb254447aca018b772cf1de81b", async() => {
                 BeginContext(350, 87, true);
                 WriteLiteral("\r\n        <input type=\"button\" value=\"Отредактировать\" class=\"btn btn-default\" />\r\n    ");
                 EndContext();
@@ -139,7 +139,7 @@ Write(Html.Raw(Model.Content));
             WriteLiteral("    ");
             EndContext();
             BeginContext(451, 73, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d7e7d4012a4490e9ebbc6a428b96be7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5ed01d267c7d404f84ffcff483c1c0de", async() => {
                 BeginContext(515, 5, true);
                 WriteLiteral("Выйти");
                 EndContext();
@@ -174,7 +174,7 @@ else
             WriteLiteral("    ");
             EndContext();
             BeginContext(542, 72, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee483abb96874ce49cf1a45c588a5030", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cca1305de4df414396342167f38d4408", async() => {
                 BeginContext(605, 5, true);
                 WriteLiteral("Войти");
                 EndContext();
@@ -328,7 +328,7 @@ WriteAttributeValue("", 1440, item.Link, 1440, 10, false);
             WriteLiteral("                    </object>\r\n                </span>\r\n                ");
             EndContext();
             BeginContext(2048, 280, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "56e5d733e47a4281a7688031feea1060", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6948102e93446a99daefbd1d73651b1", async() => {
                 BeginContext(2132, 192, true);
                 WriteLiteral("\r\n                    <h2>Добавить страницу</h2>\r\n                    <div class=\"content\">\r\n                        <p>Создать новую страницу</p>\r\n                    </div>\r\n                ");
                 EndContext();

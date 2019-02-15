@@ -47,7 +47,8 @@ namespace DeNew
                     options.LoginPath = new PathString("/Login");
                 });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddSessionStateTempDataProvider();
+            services.AddSession();
             services.AddKendo();
 
             services.AddTransient<IPageRepository, PageRepository>();
@@ -70,9 +71,8 @@ namespace DeNew
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
-
             app.UseAuthentication();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
@@ -92,7 +92,7 @@ namespace DeNew
 
             });
 
-
+            app.UseCookiePolicy();
         }
     }
 }

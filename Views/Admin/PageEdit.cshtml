@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.default.min.css" />
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.all.min.js"></script>
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.aspnetmvc.min.js"></script>
+    <script src="~/js/selectorsManager.js"></script>
 }
 
 
@@ -28,9 +29,7 @@
 
 @if (Model.CanEdit)
 {
-
-    @using (Html.BeginForm("Update", "Admin", FormMethod.Post))
-    {
+    <form asp-action="Update" asp-controller="Admin" method="post">
         <input type="hidden" id="Id" name="Id" value="@Model.Id">
         <div>
             <div id="editorLeft">
@@ -41,12 +40,13 @@
                         </td>
                         <td>
                             @(Html.Kendo().TextBox()
-                                                          .Name("Name")
-                                                          .HtmlAttributes(new
-                                                          {
-                                                              style = "width:100%",
-                                                              placeholder = "Впишите сюда название статьи"
-                                                          }))
+                                                                                  .Name("Name")
+                                                                                  .Value(Model.Name)
+                                                                                  .HtmlAttributes(new
+                                                                                  {
+                                                                                      style = "width:100%",
+                                                                                      placeholder = "Впишите сюда название статьи"
+                                                                                  }))
                         </td>
                     </tr>
                 </table>
@@ -58,11 +58,14 @@
                             </p>
                         </td>
                         <td>
-                            @(Html.TextArea("Description", new
-                                {
-                                    placeholder = "Ведите сюда описание что будет под картинкой",
-                                    style = "width:100%"
-                                }))
+                            @(Html.Kendo().TextBox()
+                                  .Name("Description")
+                                  .Value(Model.Description)
+                                  .HtmlAttributes(new
+                                  {
+                                      style = "width:100%",
+                                      placeholder = "Ведите сюда описание что будет под картинкой"
+                                  }))
                         </td>
                         <td></td>
                     </tr>
@@ -72,12 +75,13 @@
                         </td>
                         <td>
                             @(Html.Kendo().TextBox()
-                                          .Name("Alias")
-                                          .HtmlAttributes(new
-                                          {
-                                              style = "width:100%",
-                                              placeholder = "Впишите сюда описание для поисковиков"
-                                          }))
+                                .Name("Alias")
+                                .Value(Model.Alias)
+                                .HtmlAttributes(new
+                                {
+                                    style = "width:100%",
+                                    placeholder = "Впишите сюда описание для поисковиков"
+                                }))
                         </td>
                         <td></td>
                     </tr>
@@ -86,13 +90,18 @@
                             Описание для поисковиков:
                         </td>
                         <td>
-                            @(Html.Kendo().TextBox()
-                                                          .Name("MetaDescription")
-                                                          .HtmlAttributes(new
-                                                          {
-                                                              style = "width:100%",
-                                                              placeholder = "Впишите сюда описание для поисковиков"
-                                                          }))
+                            @Html.TextArea("MetaDescription", Model.MetaDescription,
+                                new { @class = "k-textbox",
+                                    style = "width: 100%;",
+                                    placeholder = "Впишите сюда описание для поисковиков" })
+                            @*@(Html.Kendo().TextBox()
+                                          .Name("MetaDescription")
+                                          .Value(Model.MetaDescription)
+                                          .HtmlAttributes(new
+                                          {
+                                              style = "width:100%",
+                                              placeholder = "Впишите сюда описание для поисковиков"
+                                          }))*@
                         </td>
                         <td></td>
                     </tr>
@@ -102,12 +111,13 @@
                         </td>
                         <td>
                             @(Html.Kendo().TextBox()
-                                                          .Name("Keywords")
-                                                          .HtmlAttributes(new
-                                                          {
-                                                              style = "width:100%",
-                                                              placeholder = "Строительство, беседки, вспашка, копка"
-                                                          }))
+                                                                                  .Name("Keywords")
+                                  .Value(Model.Keywords)
+                                                                                  .HtmlAttributes(new
+                                                                                  {
+                                                                                      style = "width:100%",
+                                                                                      placeholder = "Строительство, беседки, вспашка, копка"
+                                                                                  }))
                         </td>
                         <td></td>
                     </tr>
@@ -115,86 +125,83 @@
 
             </div>
             <div id="editorRight">
-                Текущая картинка:
+                Превью изображение:
                 <input type="hidden" id="imageName" name="imageName" value="1">
 
-                @(Html.Kendo().Upload().Name("ImagePath").Async(a => a
-                                                                                    .Save("Save", "Upload")
-                                                                                    .Remove("Remove", "Upload")
-                                                                                    .AutoUpload(true))
-                                                                                     .Events(events => events
-                                                                                            .Success("onSuccess")
-                                                                                        )
-                );
+                @(Html.Kendo().Upload().Name("previewImage").Async(a => a
+                                                                                                            .Save("Save", "Upload")
+                                                                                                            .Remove("Remove", "Upload")
+                                                                                                            .AutoUpload(true))
+                                                                                                             .Events(events => events
+                                                                                                                    .Success("onSuccess")
+                                                                                                                )
+                )
                 <br />
                 <img src="/Images/Preview/1.jpg" id="imgPreview" width="309" height="285" />
 
             </div>
             <br />
             @(Html.Kendo().Editor()
-                                              .Name("Content")
-                                              .HtmlAttributes(new { style = "height:440px", aria_label = "editor" })
-                                              .Resizable(resizable => resizable.Content(true).Toolbar(true))
-                                              .ImageBrowser(imageBrowser => imageBrowser
-                                                  .Image("~/Content/UserFiles/Images/{0}")
-                                                  .Read("Read", "ImageBrowser")
-                                                  .Create("Create", "ImageBrowser")
-                                                  .Destroy("Destroy", "ImageBrowser")
-                                                  .Upload("Upload", "ImageBrowser")
-                                                  .Thumbnail("Thumbnail", "ImageBrowser")
-                                              )
-                                              .Value(@<text>
-                                                <p>
-                                                    Read <a href="http://docs.telerik.com/kendo-ui">more details</a> or send us your
-                                                    <a href="http://www.telerik.com/forums">feedback</a>!
-                                                </p>
-                                            </text>)
+                                                                      .Name("Content")
+                                                                      .HtmlAttributes(new { style = "height:440px", aria_label = "editor" })
+                                                                      .Resizable(resizable => resizable.Content(true).Toolbar(true))
+                                                                      .ImageBrowser(imageBrowser => imageBrowser
+                                                                          .Image("~/Content/UserFiles/Images/{0}")
+                                                                          .Read("Read", "ImageBrowser")
+                                                                          .Create("Create", "ImageBrowser")
+                                                                          .Destroy("Destroy", "ImageBrowser")
+                                                                          .Upload("Upload", "ImageBrowser")
+                                                                          .Thumbnail("Thumbnail", "ImageBrowser")
+                                                                      )
+                                                                      .Value(@<text>
+                                                                        <p>
+                                                                            Read <a href="http://docs.telerik.com/kendo-ui">more details</a> or send us your
+                                                                            <a href="http://www.telerik.com/forums">feedback</a>!
+                                                                        </p>
+                                                                    </text>)
 
             )
 
             <br />
 
             @(Html.Kendo().Button()
-                                          .Name("primaryTextButton")
-                                          .HtmlAttributes(new { type = "submit", @class = "k-button k-primary" })
-                                          .Content("Сохранить статью"))
+                                                                  .Name("primaryTextButton")
+                                                                  .HtmlAttributes(new { type = "submit", @class = "k-button k-primary" })
+                                                                  .Content("Сохранить статью"))
 
-        </div>
-    }
-
-
-
-    <input type="button" value="Отредактировать" class="btn btn-default" />
-    <form asp-action="Update" asp-controller="Admin">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Content" class="control-label"></label>
-            <input asp-for="Content" class="admin-input" />
-            <span asp-validation-for="Content" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Alias"></label>
-            <input asp-for="Alias" class="admin-input" />
-            <span asp-validation-for="Alias" class="text-danger"></span>
-        </div>
-        <br />
-        <div class="form-group">
-            <input type="submit" value="Отредактировать" class="btn btn-default" />
         </div>
     </form>
+    
+        @*<form asp-action="Update" asp-controller="Admin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <input asp-for="Content" class="admin-input" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alias"></label>
+                <input asp-for="Alias" class="admin-input" />
+                <span asp-validation-for="Alias" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Отредактировать" class="btn btn-default" />
+            </div>
+        </form>*@
 
 
-    <a asp-controller="Admin" asp-action="Logout" class="top-right">Выйти</a>
+        <a asp-controller="Admin" asp-action="Logout" class="top-right">Выйти</a>
 
 
 
-}
-else
-{
-    <a asp-controller="Admin" asp-action="Index" class="top-right">Войти</a>
-    <h1>
-        @Model.Name
-    </h1>
-    <p>@Html.Raw(Model.Content)</p>
+        }
+        else
+        {
+        <a asp-controller="Admin" asp-action="Index" class="top-right">Войти</a>
+        <h1>
+            @Model.Name
+        </h1>
+        <p>@Html.Raw(Model.Content)</p>
 
-}
+        }

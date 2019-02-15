@@ -186,12 +186,12 @@ function deleteCurrentArticle() {
 
 function onSuccess(e) {
 
-    var loadAddress = window.location.protocol + "//" + window.location.host + "/administrator/getcurimage/";
+    var loadAddress = window.location.protocol + "//" + window.location.host + "/upload/getcurimage/";
 
     $.getJSON(loadAddress, {},
         function (resultData) {
 
-            $('#imgPreview').attr("src", "/Images/Preview/" + resultData.Name);
+            $('#imgPreview').attr("src", "/Images/Preview/" + resultData.name);
             $('#imageName').val(resultData.Name);
         }
     );

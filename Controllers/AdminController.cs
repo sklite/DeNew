@@ -82,6 +82,7 @@ namespace DeNew.Controllers
             return RedirectToAction("OpenPage", "Home", new { pageId = page.Id});
         }
         //[Route("/delete")]
+        [Authorize]
         [HttpPost]
         public JsonResult Delete(int pageId)
         {
@@ -94,6 +95,7 @@ namespace DeNew.Controllers
             var result = _pageManipulator.DeletePage(pageId, out string message);
             return new JsonResult(new {Deleted = result, Message = message});
         }
+        [Authorize]
         [Route("/edit")]
         public IActionResult EditPage(int pageId)
         {
