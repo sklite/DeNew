@@ -15,12 +15,30 @@ namespace DeNew.Services.Pages
             _context = context;
         }
 
-        Page LinkChildPagesTo(Page page)
+        Page FindParentPage(Page page)
+        {
+            return _context.Pages.Where(item => item.SubPages.Contains(page)).FirstOrDefault();
+        }
+
+        void FillParentPagesFor(Page page)
+        {
+            if (page.Id == VariablesSettingsConfig.MAIN_PAGE_ID)
+                return;
+            page.ParentPage = FindParentPage(page);
+            if (page.ParentPage.Id == VariablesSettingsConfig.MAIN_PAGE_ID)
+                return;
+
+            page.ParentPage.ParentPage = FindParentPage(page.ParentPage);
+            if (page.ParentPage.ParentPage.Id == VariablesSettingsConfig.MAIN_PAGE_ID)
+                return;
+            page.ParentPage.ParentPage.ParentPage = FindParentPage(page.ParentPage.ParentPage);
+        }
+
+        void LinkChildPagesFor(Page page)
         {
             if (page == null)
-                return null;
+                return;
             page.SubPages = GetChildPagesFor(page.Id).ToList();
-            return page;
         }
 
         Page GetMainpage()
@@ -44,7 +62,9 @@ namespace DeNew.Services.Pages
             else
                 result = _context.Pages.SingleOrDefault(page => page.ParentPage.Alias == pageAlias1 && page.Alias == pageAlias2 && page.IsDeleted == false);
 
-            return LinkChildPagesTo(result);
+            LinkChildPagesFor(result);
+            FillParentPagesFor(result);
+            return result;
         }
 
         public IEnumerable<Page> GetChildPagesFor(int pageId)

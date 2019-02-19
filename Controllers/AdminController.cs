@@ -116,7 +116,8 @@ namespace DeNew.Controllers
 
             var pageModel = _pageConverterService.ConvertPageVm(pageVm);
             var result = _pageManipulator.UpdatePage(pageModel, out string message);
-            return new JsonResult(new { Updated = result, Message = message });
+
+            return RedirectToAction("OpenPage", "Home", new {pageId = pageModel.Id});
         }
 
         public IActionResult ImageBrowser()

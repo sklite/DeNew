@@ -6,7 +6,7 @@ using DeNew.Models.ViewModels.Interfaces;
 
 namespace DeNew.Models.ViewModels
 {
-    public class PageViewModel : IEditable
+    public class PageViewModel : IEditable, INavigable
     {
         public int Id { get; set; }
         public int OrderNum { get; set; }
@@ -23,5 +23,6 @@ namespace DeNew.Models.ViewModels
         public IEnumerable<PageViewModel> SubPages { get; set; }
         public bool CanEdit { get; set; }
         public string EditMessage { get; set; }
+        public ICollection<INavigationItem> NavigationItems { get; set; }
     }
 }

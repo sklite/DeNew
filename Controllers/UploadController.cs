@@ -13,8 +13,6 @@ namespace DeNew.Controllers
 {
     public class UploadController : Controller
     {
-        //IGetArticle _articleGetter;
-        //ISaveArticle _articleSaver;
         private IHostingEnvironment _hostingEnvironment;
         private const string tempImage = "currentFileImage";
         public UploadController(IHostingEnvironment hostingEnvironment)
@@ -38,7 +36,8 @@ namespace DeNew.Controllers
         public async Task<IActionResult> Save(IEnumerable<IFormFile> previewImage)
         {
             if (previewImage == null)
-                return Content("");
+                return Ok();
+            //return Content("");
 
             // The Name of the Upload component is "files"
             TempData[tempImage] = string.Empty;
@@ -57,14 +56,16 @@ namespace DeNew.Controllers
                 }
             }
 
+            return Ok();
             // Return an empty string to signify success
-            return Content(string.Empty);
+            //return Content(string.Empty);
         }
         [Authorize]
-        public ActionResult Remove(string[] fileNames)
+        public IActionResult Remove(string[] fileNames)
         {
             if (fileNames == null || fileNames.Length == 0)
-                return Content("");
+                return Ok();
+                //return Content("");
 
 
 
@@ -80,7 +81,8 @@ namespace DeNew.Controllers
 
             }
 
-            return Content(string.Empty);
+            return Ok();
+            //return Content(string.Empty);
         }
 
         public JsonResult Getcurimage()

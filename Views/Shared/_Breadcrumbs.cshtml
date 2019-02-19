@@ -1,0 +1,21 @@
+﻿@model DeNew.Models.ViewModels.Interfaces.INavigable
+
+
+   
+
+<section class="header">
+    <ul class="breadcrumb">
+        @foreach (var item in Model.NavigationItems)
+        {
+
+            if (item.ActiveLink)
+            {
+                <li><a href="@item.Link">@item.Title</a></li>
+            }
+            else
+            {
+                <li>@item.Title</li>
+            }
+        }
+    </ul>
+</section>
