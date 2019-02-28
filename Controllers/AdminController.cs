@@ -46,7 +46,7 @@ namespace DeNew.Controllers
         }
 
         [Route("/login")]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View("View");
         }
@@ -99,10 +99,12 @@ namespace DeNew.Controllers
         [Route("/edit")]
         public IActionResult EditPage(int pageId)
         {
-            var mainPage = _pageRepository.GetPageById(pageId);
-            var mainPageVm = _pageConverterService.ConvertPage(mainPage);
-            mainPageVm.CanEdit = User.Identity.IsAuthenticated;
-            return View("PageEdit", mainPageVm);
+            var page = _pageRepository.GetPageById(pageId);
+            var pageVm = _pageConverterService.ConvertPage(page);
+            pageVm.CanEdit = User.Identity.IsAuthenticated;
+            if (pageId == 1)
+                return View("WebsiteEdit", pageVm);
+            return View("PageEdit", pageVm);
         }
 
         [HttpPost]

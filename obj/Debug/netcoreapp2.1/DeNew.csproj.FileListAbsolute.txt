@@ -39,3 +39,4 @@ C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Admin\PageEdit.g.c
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_AdminLayout.g.cshtml.cs
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.csprojAssemblyReference.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Breadcrumbs.g.cshtml.cs
+C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\Admin\WebsiteEdit.g.cshtml.cs

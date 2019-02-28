@@ -90,7 +90,7 @@
                 articleDescription.val(resultData.Description);
                 articleTextArea.data("kendoEditor").value(resultData.Content);
                 articleDeleted.prop('checked', resultData.IsDeleted);
-                $('#imgPreview').attr("src", "/Images/Preview/" + resultData.ImageName);
+                $('#imagePath').attr("src", "/Images/Preview/" + resultData.ImagePath);
                 $('#imageName').val(resultData.ImageName);
                 articleMetaDesc.val(resultData.MetaDescription);
                 articleMetaKeywords.val(resultData.Keywords);
@@ -122,7 +122,7 @@
             subcatSelector.prop("disabled", true);
             $("#articleName").val("");
             $('#descriptionEditor').val("");
-            $('#imgPreview').attr("src", "/Images/Preview/AddImage.jpg");
+            $('#imagePath').attr("src", "/Images/Preview/AddImage.jpg");
             $('#imageName').val("AddImage.jpg");
 
 
@@ -156,7 +156,7 @@
         if (subcatSelector.val() == GLOBAL_SETTINGS.ADD_NEW_IND) {
             $("#articleName").val("");
             $('#descriptionEditor').val("");
-            $('#imgPreview').attr("src", "/Images/Preview/AddImage.jpg");
+            $('#imagePath').attr("src", "/Images/Preview/AddImage.jpg");
             $('#imageName').val("AddImage.jpg");
             return;
         }
@@ -191,8 +191,8 @@ function onSuccess(e) {
     $.getJSON(loadAddress, {},
         function (resultData) {
 
-            $('#imgPreview').attr("src", "/Images/Preview/" + resultData.name);
-            $('#imageName').val(resultData.Name);
+            $('#imagePreview').attr("src", "/Images/Preview/" + resultData.name);
+            $('#imagePath').val(resultData.name);
         }
     );
 

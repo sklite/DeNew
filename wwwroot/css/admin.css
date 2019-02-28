@@ -98,4 +98,8 @@ select {
     top: 1px;
 }
 
+.padded-input{
+    padding: 10px !important;
+}
+
 
