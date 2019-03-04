@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/DeNew",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:61603",
       "sslPort": 0
@@ -18,11 +22,11 @@
     "DeNew": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "http://localhost:5000/main/61",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5000",
-      "launchUrl": "http://localhost:5000/main/61"
+      "applicationUrl": "http://localhost:5000"
     }
   }
 }

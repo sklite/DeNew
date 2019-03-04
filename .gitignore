@@ -343,3 +343,4 @@ healthchecksdb
 #content files
 wwwroot/content/UserFiles
 wwwroot/images/
+appsettings.json

@@ -38,7 +38,8 @@ namespace DeNew
             });
             services.AddAutoMapper();
             // получаем строку подключения из файла конфигурации
-            string connection = Configuration.GetConnectionString("DefaultConnection");
+            //string connection = Configuration.GetConnectionString("DefaultConnection");
+            string connection = Configuration.GetConnectionString("RegRuConnection");
             services.AddDbContext<DeContext>(options =>
                 options.UseSqlServer(connection));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -61,7 +62,8 @@ namespace DeNew
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (true)
+            //if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
