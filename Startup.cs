@@ -20,9 +20,20 @@ namespace DeNew
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             Configuration = configuration;
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+            //var mvcBuilder = serviceProvider.GetService<IMvcBuilder>();
+            //new MvcConfiguration().ConfigureMvc(mvcBuilder);
+
+            Configuration = builder.Build();
+
         }
 
         public IConfiguration Configuration { get; }
@@ -38,10 +49,12 @@ namespace DeNew
             });
             services.AddAutoMapper();
             // получаем строку подключения из файла конфигурации
-            //string connection = Configuration.GetConnectionString("DefaultConnection");
-            string connection = Configuration.GetConnectionString("RegRuConnection");
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            //string connection = Configuration.GetConnectionString("RegRuConnection");
+            //string connection = Configuration.GetConnectionString("AzureConnection");
             services.AddDbContext<DeContext>(options =>
                 options.UseSqlServer(connection));
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions
                 {
@@ -70,6 +83,12 @@ namespace DeNew
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+            }
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<DeContext>();
+                context.Database.Migrate();
             }
 
             app.UseStaticFiles();

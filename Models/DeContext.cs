@@ -15,7 +15,8 @@ namespace DeNew.Models
         public DbSet<Page> Pages { get; set; }
         public DeContext(DbContextOptions options) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
+            //options.IsFrozen
         }
     }
 }

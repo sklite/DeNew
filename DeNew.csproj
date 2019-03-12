@@ -3,10 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>1ed6a05e-8ccb-491b-a0ff-6d2c51b6bba8</UserSecretsId>
+   <!-- <PreserveCompilationContext>true</PreserveCompilationContext> -->
+   <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\css\admin.css" />
+    <Content Remove="wwwroot\css\breadcrumbs.css" />
     <Content Remove="wwwroot\css\font-awesome.min.css" />
     <Content Remove="wwwroot\css\ie8.css" />
     <Content Remove="wwwroot\css\ie9.css" />
@@ -217,17 +220,8 @@
     <Content Remove="wwwroot\css\kendo\textures\transparency.png" />
     <Content Remove="wwwroot\css\kendo\textures\transtexture.png" />
     <Content Remove="wwwroot\css\main.css" />
-    <Content Remove="wwwroot\fonts\fontawesome-webfont.eot" />
-    <Content Remove="wwwroot\fonts\fontawesome-webfont.svg" />
-    <Content Remove="wwwroot\fonts\fontawesome-webfont.ttf" />
-    <Content Remove="wwwroot\fonts\fontawesome-webfont.woff" />
-    <Content Remove="wwwroot\fonts\fontawesome-webfont.woff2" />
-    <Content Remove="wwwroot\fonts\FontAwesome.otf" />
-    <Content Remove="wwwroot\fonts\Heinrich-Text.ttf" />
-    <Content Remove="wwwroot\fonts\OfficinaSerifC-Book.otf" />
-    <Content Remove="wwwroot\fonts\ptsans.ttf" />
-    <Content Remove="wwwroot\fonts\ptsans.woff" />
-    <Content Remove="wwwroot\fonts\ptsans.woff2" />
+    <Content Remove="wwwroot\css\site.css" />
+    <Content Remove="wwwroot\css\site.min.css" />
     <Content Remove="wwwroot\js\ie\html5shiv.js" />
     <Content Remove="wwwroot\js\ie\respond.min.js" />
     <Content Remove="wwwroot\js\jquery.min.js" />
@@ -1447,10 +1441,6 @@
     <Content Remove="wwwroot\js\kendo\messages\kendo.messages.zh-TW.min.js" />
     <Content Remove="wwwroot\js\kendo\messages\kendo.messages.zh-TW.min.js.map" />
     <Content Remove="wwwroot\js\kendo\pako_deflate.min.js" />
-    <Content Remove="wwwroot\js\main.js" />
-    <Content Remove="wwwroot\js\selectorsManager.js" />
-    <Content Remove="wwwroot\js\skel.min.js" />
-    <Content Remove="wwwroot\js\util.js" />
     <Content Remove="wwwroot\sass\base\_page.scss" />
     <Content Remove="wwwroot\sass\base\_typography.scss" />
     <Content Remove="wwwroot\sass\components\_box.scss" />
@@ -1495,6 +1485,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\css\admin.css" />
+    <None Include="wwwroot\css\breadcrumbs.css" />
     <None Include="wwwroot\css\font-awesome.min.css" />
     <None Include="wwwroot\css\ie8.css" />
     <None Include="wwwroot\css\ie9.css" />
@@ -1705,17 +1696,8 @@
     <None Include="wwwroot\css\kendo\textures\transparency.png" />
     <None Include="wwwroot\css\kendo\textures\transtexture.png" />
     <None Include="wwwroot\css\main.css" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.eot" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.ttf" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.woff" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
-    <None Include="wwwroot\fonts\FontAwesome.otf" />
-    <None Include="wwwroot\fonts\Heinrich-Text.ttf" />
-    <None Include="wwwroot\fonts\OfficinaSerifC-Book.otf" />
-    <None Include="wwwroot\fonts\ptsans.ttf" />
-    <None Include="wwwroot\fonts\ptsans.woff" />
-    <None Include="wwwroot\fonts\ptsans.woff2" />
+    <None Include="wwwroot\css\site.css" />
+    <None Include="wwwroot\css\site.min.css" />
     <None Include="wwwroot\js\ie\html5shiv.js" />
     <None Include="wwwroot\js\ie\respond.min.js" />
     <None Include="wwwroot\js\jquery.min.js" />
@@ -2935,10 +2917,6 @@
     <None Include="wwwroot\js\kendo\messages\kendo.messages.zh-TW.min.js" />
     <None Include="wwwroot\js\kendo\messages\kendo.messages.zh-TW.min.js.map" />
     <None Include="wwwroot\js\kendo\pako_deflate.min.js" />
-    <None Include="wwwroot\js\main.js" />
-    <None Include="wwwroot\js\selectorsManager.js" />
-    <None Include="wwwroot\js\skel.min.js" />
-    <None Include="wwwroot\js\util.js" />
     <None Include="wwwroot\sass\base\_page.scss" />
     <None Include="wwwroot\sass\base\_typography.scss" />
     <None Include="wwwroot\sass\components\_box.scss" />

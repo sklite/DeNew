@@ -70,9 +70,10 @@
                                  <div class="top-right-relative red-button" onclick="RemoveArticle(@item.Id)">Удалить</div>
                              }
                              <span class="image">
-                                 <object data="/images/preview/imgStub.jpg" type="image/png">
+                                 @*<object data="/images/preview/imgStub.jpg" type="image/png">
                                      <img src="@item.ImagePath" alt="" />
-                                 </object>
+                                 </object>*@
+                                     <img src="@item.ImagePath" alt="" />
                              </span>
                              <a href="@item.Link">
                                  <h2>@item.Name</h2>
@@ -90,6 +91,7 @@
                             <object data="/images/preview/imgStub.jpg" type="image/png">
                                 @*<img src="@item.ImagePath" alt="" />*@
                             </object>
+
                         </span>
                         <a asp-controller="Admin" asp-action="CreateNewPage" asp-route-parentId="@Model.Id">
                             <h2>Добавить страницу</h2>

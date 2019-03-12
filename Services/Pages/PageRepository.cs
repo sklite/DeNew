@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DeNew.Models;
@@ -43,6 +44,18 @@ namespace DeNew.Services.Pages
 
         Page GetMainpage()
         {
+            if (_context == null)
+                throw new Exception("_context is Null");
+
+            if (_context.Pages == null)
+                throw new Exception("_context.Pages is Null");
+            var list = _context.Pages.ToList();
+            if (list.Count == 0)
+                throw new Exception("list.Count == 0");
+            if (!_context.Pages.Any())
+                throw new Exception("_context.Pages length == 0");
+
+
             return _context.Pages.SingleOrDefault(page => page.Id == VariablesSettingsConfig.MAIN_PAGE_ID);
         }
 

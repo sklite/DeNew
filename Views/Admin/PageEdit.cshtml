@@ -16,12 +16,21 @@
     {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.common-bootstrap.min.css" />
-    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.516/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.2.516/styles/kendo.common-bootstrap.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.2.516/styles/kendo.default.min.css" />
 
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.all.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.aspnetmvc.min.js"></script>
-    <script src="~/js/selectorsManager.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.aspnetmvc.min.js"></script>
+    <script>
+        var GLOBAL_SETTINGS = {
+            SELECT_IND: @DeNew.Settings.VariablesSettingsConfig.SELECT_IND,
+            ADD_NEW_IND: @DeNew.Settings.VariablesSettingsConfig.ADD_NEW_IND,
+            DEFAULT_ARTICLE_NAME: "@DeNew.Settings.VariablesSettingsConfig.DEFAULT_ARTICLE_NAME",
+            DEFALT_ARTICLE_DESCRIPTION: "@DeNew.Settings.VariablesSettingsConfig.DEFAULT_ARTICLE_DESCRIPTION",
+            DEFAULT_ARTICLE_CONTENT: "@DeNew.Settings.VariablesSettingsConfig.DEFAULT_ARTICLE_CONTENT"
+        }
+    </script>
+    <script src="/js/selectorsManager.js"></script>
 }
 
 <header id="header">
