@@ -1,3 +1,4 @@
+C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.csprojAssemblyReference.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.csproj.CoreCompileInputs.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.RazorAssemblyInfo.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.RazorAssemblyInfo.cs
@@ -8,9 +9,6 @@ C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.deps.json
 C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.runtimeconfig.json
 C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.runtimeconfig.dev.json
 C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.dll
-C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.pdb
-C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.Views.dll
-C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.Views.pdb
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.TagHelpers.input.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.TagHelpers.output.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.RazorCoreGenerate.cache
@@ -36,8 +34,10 @@ C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.csh
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.RazorTargetAssemblyInfo.cache
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.RazorTargetAssemblyInfo.cs
+C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.pdb
+C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.Views.dll
+C:\Prj\github\DeNew\DeNew\bin\Debug\netcoreapp2.1\DeNew.Views.pdb
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.Views.pdb
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.dll
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.pdb
 C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.csproj.CopyComplete
-C:\Prj\github\DeNew\DeNew\obj\Debug\netcoreapp2.1\DeNew.csprojAssemblyReference.cache

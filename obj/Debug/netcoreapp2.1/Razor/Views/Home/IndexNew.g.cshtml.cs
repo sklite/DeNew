@@ -97,7 +97,7 @@ using DeNew.Settings;
             WriteLiteral("            ");
             EndContext();
             BeginContext(611, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a07c0521e6b94184a7fb175a70c79ff8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "25b60e4ee44e4dc3bba05037d4b32813", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -162,7 +162,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper.Model = Model;
             WriteLiteral("            ");
             EndContext();
             BeginContext(1075, 184, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75f7074644b6476bb71f3f2fe14dc287", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "002183fbe12b4c5c98e2126a31e309d5", async() => {
                 BeginContext(1152, 103, true);
                 WriteLiteral("\r\n                <input type=\"button\" value=\"Отредактировать\" class=\"btn btn-default\" />\r\n            ");
                 EndContext();
@@ -199,7 +199,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper.Model = Model;
             WriteLiteral("\r\n            ");
             EndContext();
             BeginContext(1273, 73, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "56d7c600e0854b699cf8955bfdda43ce", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2f7f79ac46ff4984b18f86f7b13e777b", async() => {
                 BeginContext(1337, 5, true);
                 WriteLiteral("Выйти");
                 EndContext();
@@ -234,7 +234,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper.Model = Model;
             WriteLiteral("            ");
             EndContext();
             BeginContext(1396, 72, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57743f6e1d474a9c9ab171e558a5474d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5cf5626cf36045638b8e7971f690986e", async() => {
                 BeginContext(1459, 5, true);
                 WriteLiteral("Войти");
                 EndContext();
@@ -390,7 +390,7 @@ WriteAttributeValue("", 2536, item.Link, 2536, 10, false);
             WriteLiteral("                            </object>\r\n\r\n                        </span>\r\n                        ");
             EndContext();
             BeginContext(3289, 320, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d5b76e5dd58047dd893b30b270cdabfe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e95bb8f943764a2395ebeb3c40a2bd8b", async() => {
                 BeginContext(3373, 232, true);
                 WriteLiteral("\r\n                            <h2>Добавить страницу</h2>\r\n                            <div class=\"content\">\r\n                                <p>Создать новую страницу</p>\r\n                            </div>\r\n                        ");
                 EndContext();

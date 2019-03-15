@@ -64,7 +64,7 @@ namespace DeNew
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddSessionStateTempDataProvider();
             services.AddSession();
             services.AddKendo();
-
+            
             services.AddTransient<IPageRepository, PageRepository>();
             services.AddTransient<IPageManipulator, PageManipulator>();
             services.AddTransient<IPageConverterService, PageConverterService>();
